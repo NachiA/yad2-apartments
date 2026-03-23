@@ -291,13 +291,24 @@ export default async function Home(props: PageProps<"/">) {
                     <form action={saveApartment} className="grid gap-4 md:grid-cols-2">
                       <input name="id" type="hidden" value={apartment.id} />
 
-                      <Field
-                        defaultValue={apartment.url}
-                        label="קישור"
-                        name="url"
-                        required
-                        type="url"
-                      />
+                      <label className="flex flex-col gap-2 text-sm font-medium text-stone-700">
+                        <span>קישור</span>
+                        <input
+                          className="rounded-xl border border-stone-300 bg-white px-3 py-2 text-sm text-stone-900 outline-none ring-0 transition focus:border-stone-500"
+                          defaultValue={apartment.url}
+                          name="url"
+                          required
+                          type="url"
+                        />
+                        <a
+                          className="w-fit text-xs text-stone-600 underline underline-offset-4 hover:text-stone-900"
+                          href={apartment.url}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          לפתיחת הקישור
+                        </a>
+                      </label>
                       <Field
                         defaultValue={apartment.title}
                         label="כותרת"
