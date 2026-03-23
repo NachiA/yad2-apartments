@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { refresh } from "next/cache";
 
+import { ConfirmDeleteButton } from "./_components/confirm-delete-button";
 import {
   addApartment,
   deleteApartment,
@@ -47,6 +48,7 @@ function getApartmentInput(formData: FormData): ApartmentInput {
   return {
     url: getString(formData, "url"),
     title: getString(formData, "title"),
+    contact_phone: getString(formData, "contact_phone"),
     price: getNumber(formData, "price"),
     neighborhood: getString(formData, "neighborhood"),
     rooms: getNumber(formData, "rooms"),
@@ -212,6 +214,7 @@ export default async function Home(props: PageProps<"/">) {
             <form action={createApartment} className="grid gap-4 md:grid-cols-2">
               <Field label="קישור" name="url" required type="url" />
               <Field label="כותרת" name="title" required />
+              <Field label="טלפון לפנייה" name="contact_phone" type="text" />
               <Field label="מחיר" name="price" required step="1" type="number" />
               <Field label="שכונה" name="neighborhood" required />
               <Field label="חדרים" name="rooms" required step="0.5" type="number" />
@@ -315,6 +318,23 @@ export default async function Home(props: PageProps<"/">) {
                         name="title"
                         required
                       />
+                      <label className="flex flex-col gap-2 text-sm font-medium text-stone-700">
+                        <span>טלפון לפנייה</span>
+                        <input
+                          className="rounded-xl border border-stone-300 bg-white px-3 py-2 text-sm text-stone-900 outline-none ring-0 transition focus:border-stone-500"
+                          defaultValue={apartment.contact_phone}
+                          name="contact_phone"
+                          type="text"
+                        />
+                        {apartment.contact_phone ? (
+                          <a
+                            className="w-fit text-xs text-stone-600 underline underline-offset-4 hover:text-stone-900"
+                            href={`tel:${apartment.contact_phone}`}
+                          >
+                            חיוג למספר
+                          </a>
+                        ) : null}
+                      </label>
                       <Field
                         defaultValue={apartment.price}
                         label="מחיר"
@@ -399,12 +419,10 @@ export default async function Home(props: PageProps<"/">) {
 
                     <form action={removeApartment} className="mt-3">
                       <input name="id" type="hidden" value={apartment.id} />
-                      <button
+                      <ConfirmDeleteButton
                         className="inline-flex items-center justify-center rounded-xl border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-700 transition hover:bg-rose-100"
-                        type="submit"
-                      >
-                        מחיקת דירה
-                      </button>
+                        message="האם את/ה בטוח/ה שברצונך למחוק את המודעה הזאת?"
+                      />
                     </form>
                   </article>
                 ))}

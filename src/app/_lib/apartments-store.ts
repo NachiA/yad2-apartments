@@ -9,6 +9,7 @@ export type Apartment = {
   id: string;
   url: string;
   title: string;
+  contact_phone: string;
   price: number;
   neighborhood: string;
   rooms: number;
@@ -27,6 +28,7 @@ let apartments: Apartment[] = [
     id: "apt-3jdhzy73",
     url: "https://www.yad2.co.il/realestate/item/jerusalem-area/3jdhzy73",
     title: "דירה, חוזה סן מרטין 23, קטמונים, ירושלים",
+    contact_phone: "",
     price: 4000000,
     neighborhood: "קטמונים",
     rooms: 4.5,
@@ -42,6 +44,7 @@ let apartments: Apartment[] = [
     id: "apt-0cojt1fd",
     url: "https://www.yad2.co.il/realestate/item/jerusalem-area/0cojt1fd",
     title: "גג/ פנטהאוז, חוזה סן מרטין 32, קטמונים, ירושלים",
+    contact_phone: "",
     price: 3780000,
     neighborhood: "קטמונים",
     rooms: 4,
@@ -57,6 +60,7 @@ let apartments: Apartment[] = [
     id: "apt-e9lthyr3",
     url: "https://www.yad2.co.il/realestate/item/jerusalem-area/e9lthyr3",
     title: "דירה, דרך בית לחם, תלפיות תעשיה ומסחר, ירושלים",
+    contact_phone: "",
     price: 3350000,
     neighborhood: "תלפיות תעשיה ומסחר",
     rooms: 4,
@@ -72,6 +76,7 @@ let apartments: Apartment[] = [
     id: "apt-h3jvjklt",
     url: "https://www.yad2.co.il/realestate/item/jerusalem-area/h3jvjklt",
     title: "דירה, השופט חיים כהן, ארנונה, ירושלים",
+    contact_phone: "",
     price: 3690000,
     neighborhood: "ארנונה",
     rooms: 4,
@@ -87,6 +92,7 @@ let apartments: Apartment[] = [
     id: "apt-dugy43gg",
     url: "https://www.yad2.co.il/realestate/item/jerusalem-area/dugy43gg",
     title: "דירה, דוד אלרואי, קטמון הישנה, ירושלים",
+    contact_phone: "",
     price: 3900000,
     neighborhood: "קטמון הישנה",
     rooms: 4,
@@ -102,6 +108,7 @@ let apartments: Apartment[] = [
     id: "apt-8xcpkjaj",
     url: "https://www.yad2.co.il/realestate/item/jerusalem-area/8xcpkjaj",
     title: "גג/ פנטהאוז, הנרייטה סולד 7, קרית היובל, ירושלים",
+    contact_phone: "",
     price: 3800000,
     neighborhood: "קרית היובל",
     rooms: 4,
