@@ -272,27 +272,37 @@ export default async function Home(props: PageProps<"/">) {
             ) : (
               <div className="grid gap-4">
                 {apartments.map((apartment) => (
-                  <article
+                  <details
                     key={apartment.id}
-                    className="rounded-3xl border border-stone-200 bg-white p-6 shadow-sm"
+                    className="rounded-3xl border border-stone-200 bg-white shadow-sm"
                   >
-                    <div className="mb-5 flex flex-wrap items-center gap-3">
-                      <h3 className="text-lg font-semibold">{apartment.title}</h3>
-                      <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
-                        {contactStatusLabels[apartment.contact_status]}
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 marker:content-none">
+                      <div className="min-w-0">
+                        <h3 className="truncate text-lg font-semibold">{apartment.title}</h3>
+                        <p className="mt-1 text-sm text-stone-600">{apartment.neighborhood}</p>
+                      </div>
+                      <span className="shrink-0 rounded-full bg-stone-100 px-3 py-1 text-xs font-semibold text-stone-700">
+                        פתיחה
                       </span>
-                      <a
-                        className="text-sm font-medium text-stone-600 underline-offset-4 hover:underline"
-                        href={apartment.url}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        פתיחת מודעה
-                      </a>
-                    </div>
+                    </summary>
 
-                    <form action={saveApartment} className="grid gap-4 md:grid-cols-2">
-                      <input name="id" type="hidden" value={apartment.id} />
+                    <div className="border-t border-stone-200 px-6 py-6">
+                      <div className="mb-5 flex flex-wrap items-center gap-3">
+                        <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
+                          {contactStatusLabels[apartment.contact_status]}
+                        </span>
+                        <a
+                          className="text-sm font-medium text-stone-600 underline-offset-4 hover:underline"
+                          href={apartment.url}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          פתיחת מודעה
+                        </a>
+                      </div>
+
+                      <form action={saveApartment} className="grid gap-4 md:grid-cols-2">
+                        <input name="id" type="hidden" value={apartment.id} />
 
                       <label className="flex flex-col gap-2 text-sm font-medium text-stone-700">
                         <span>קישור</span>
@@ -407,24 +417,25 @@ export default async function Home(props: PageProps<"/">) {
                         />
                       </label>
 
-                      <div className="flex flex-wrap gap-3">
-                        <button
-                          className="inline-flex items-center justify-center rounded-xl bg-stone-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-stone-700"
-                          type="submit"
-                        >
-                          שמירת שינויים
-                        </button>
-                      </div>
-                    </form>
+                        <div className="flex flex-wrap gap-3">
+                          <button
+                            className="inline-flex items-center justify-center rounded-xl bg-stone-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-stone-700"
+                            type="submit"
+                          >
+                            שמירת שינויים
+                          </button>
+                        </div>
+                      </form>
 
-                    <form action={removeApartment} className="mt-3">
-                      <input name="id" type="hidden" value={apartment.id} />
-                      <ConfirmDeleteButton
-                        className="inline-flex items-center justify-center rounded-xl border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-700 transition hover:bg-rose-100"
-                        message="האם את/ה בטוח/ה שברצונך למחוק את המודעה הזאת?"
-                      />
-                    </form>
-                  </article>
+                      <form action={removeApartment} className="mt-3">
+                        <input name="id" type="hidden" value={apartment.id} />
+                        <ConfirmDeleteButton
+                          className="inline-flex items-center justify-center rounded-xl border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-700 transition hover:bg-rose-100"
+                          message="האם את/ה בטוח/ה שברצונך למחוק את המודעה הזאת?"
+                        />
+                      </form>
+                    </div>
+                  </details>
                 ))}
               </div>
             )}
